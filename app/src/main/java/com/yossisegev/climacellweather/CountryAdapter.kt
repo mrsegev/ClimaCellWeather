@@ -12,7 +12,7 @@ import com.yossisegev.climacellweather.country.entities.Country
 import kotlinx.android.synthetic.main.country_row.view.*
 
 
-class CountryAdapter(private val countries: List<Country>) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter(private val countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_row, parent, false)
@@ -20,7 +20,7 @@ class CountryAdapter(private val countries: List<Country>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.bind(countries[position])
+        holder.bind(countries[position], callback)
     }
 
     override fun getItemCount(): Int {
@@ -31,11 +31,15 @@ class CountryAdapter(private val countries: List<Country>) : RecyclerView.Adapte
 
     class CountryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bind(country: Country) {
-            Log.d("testing", country.name)
-
-            itemView.country_row_capital.text = country.capital
-            itemView.country_row_country.text = country.name
+        fun bind(country: Country, callback: CountryAdapterCallback?) = with(itemView) {
+            country_row_capital.text = country.capital
+            country_row_country.text = country.name
+            setOnClickListener { callback?.onCountrySelected(country) }
         }
     }
+}
+
+
+interface CountryAdapterCallback {
+    fun onCountrySelected(country: Country)
 }

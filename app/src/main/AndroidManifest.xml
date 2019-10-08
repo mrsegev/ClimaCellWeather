@@ -5,7 +5,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:name="com.yossisegev.climacellweather.App"
         android:allowBackup="true"
@@ -15,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name="com.yossisegev.climacellweather.WeatherActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

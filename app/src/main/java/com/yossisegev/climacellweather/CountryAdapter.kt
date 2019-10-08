@@ -34,8 +34,8 @@ class CountryAdapter(private val countries: List<Country>) : RecyclerView.Adapte
         fun bind(country: Country) {
             Log.d("testing", country.name)
 
-            SvgLoader.pluck()
-                .load(url, image);
+            itemView.country_row_capital.text = country.capital
+            itemView.country_row_country.text = country.name
         }
     }
 }

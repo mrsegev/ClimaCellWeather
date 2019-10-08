@@ -5,10 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/current_weather"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/weather_header_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:text="100" />
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/current_weather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:text="100" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecast_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_header_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

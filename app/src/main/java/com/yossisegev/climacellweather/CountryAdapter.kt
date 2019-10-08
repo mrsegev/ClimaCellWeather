@@ -1,18 +1,15 @@
 package com.yossisegev.climacellweather
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ahmadrosid.svgloader.SvgLoader
-import com.bumptech.glide.Glide
 import com.kinecosystem.myapplication.R
 import com.yossisegev.climacellweather.country.entities.Country
 import kotlinx.android.synthetic.main.country_row.view.*
 
 
-class CountryAdapter(private val countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter(private val countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<ForecastAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_row, parent, false)

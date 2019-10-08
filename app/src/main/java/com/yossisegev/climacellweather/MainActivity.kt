@@ -1,30 +1,24 @@
 package com.kinecosystem.myapplication
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.yossisegev.climacellweather.CountryAdapter
+import com.yossisegev.climacellweather.ForecastAdapter
 import com.yossisegev.climacellweather.CountryAdapterCallback
 import com.yossisegev.climacellweather.WeatherActivity
 import com.yossisegev.climacellweather.country.CapitalsVMFactory
 import com.yossisegev.climacellweather.country.CapitalsViewModel
 import com.yossisegev.climacellweather.country.data.CountryRepository
 import com.yossisegev.climacellweather.country.entities.Country
-import com.yossisegev.climacellweather.weather.ForecastVMFactory
-import com.yossisegev.climacellweather.weather.ForecastViewModel
-import com.yossisegev.climacellweather.weather.data.WeatherApi
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity(), CountryAdapterCallback {
 
-    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,7 +30,7 @@ class MainActivity : AppCompatActivity(), CountryAdapterCallback {
 
         capitalsViewModel.countriesData.observe(this, Observer {
             country_list.layoutManager = LinearLayoutManager(this)
-            country_list.adapter = CountryAdapter(it, this)
+            country_list.adapter = ForecastAdapter(it, this)
         })
 
         capitalsViewModel.getCountries()

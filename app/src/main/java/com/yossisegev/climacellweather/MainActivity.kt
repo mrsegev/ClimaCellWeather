@@ -8,10 +8,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.yossisegev.climacellweather.country.CapitalsVMFactory
 import com.yossisegev.climacellweather.country.CapitalsViewModel
-import com.yossisegev.climacellweather.country.CountryRepository
+import com.yossisegev.climacellweather.country.data.CountryRepository
 import com.yossisegev.climacellweather.weather.ForecastVMFactory
 import com.yossisegev.climacellweather.weather.ForecastViewModel
-import com.yossisegev.climacellweather.weather.api.WeatherApi
+import com.yossisegev.climacellweather.weather.data.WeatherApi
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {

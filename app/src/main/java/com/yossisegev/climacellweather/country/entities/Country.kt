@@ -1,4 +1,4 @@
-package com.yossisegev.climacellweather.country
+package com.yossisegev.climacellweather.country.entities
 
 data class Country(
     val name: String,

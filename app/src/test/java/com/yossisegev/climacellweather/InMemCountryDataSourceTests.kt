@@ -1,7 +1,7 @@
 package com.yossisegev.climacellweather
 
-import com.yossisegev.climacellweather.country.Country
-import com.yossisegev.climacellweather.country.InMemCountryDataSource
+import com.yossisegev.climacellweather.country.entities.Country
+import com.yossisegev.climacellweather.country.data.InMemCountryDataSource
 import org.junit.Test
 
 /**
@@ -35,9 +35,27 @@ class InMemCountryDataSourceTests {
 
     private fun getMockCountryList(): ArrayList<Country> {
         val countryList = arrayListOf<Country>()
-        countryList.add(Country("name1", "cap1", "flag"))
-        countryList.add(Country("name2", "cap2", "flag"))
-        countryList.add(Country("name3", "cap3", "flag"))
+        countryList.add(
+            Country(
+                "name1",
+                "cap1",
+                "flag"
+            )
+        )
+        countryList.add(
+            Country(
+                "name2",
+                "cap2",
+                "flag"
+            )
+        )
+        countryList.add(
+            Country(
+                "name3",
+                "cap3",
+                "flag"
+            )
+        )
         return countryList
     }
 }

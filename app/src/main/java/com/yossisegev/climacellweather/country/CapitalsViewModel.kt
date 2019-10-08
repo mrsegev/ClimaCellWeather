@@ -3,6 +3,7 @@ package com.yossisegev.climacellweather.country
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.yossisegev.climacellweather.country.data.CountryRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 

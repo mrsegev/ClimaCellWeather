@@ -1,6 +1,6 @@
-package com.yossisegev.climacellweather.country
+package com.yossisegev.climacellweather.country.data
 
-import com.yossisegev.climacellweather.country.Country
+import com.yossisegev.climacellweather.country.entities.Country
 import io.reactivex.Observable
 
 interface CountryDataSource {

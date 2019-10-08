@@ -2,6 +2,7 @@ package com.yossisegev.climacellweather.country
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.yossisegev.climacellweather.country.data.CountryRepository
 
 @Suppress("UNCHECKED_CAST")
 class CapitalsVMFactory(private val countryRepository: CountryRepository) : ViewModelProvider.Factory {

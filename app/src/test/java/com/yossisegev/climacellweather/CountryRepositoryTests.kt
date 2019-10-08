@@ -1,6 +1,10 @@
 package com.yossisegev.climacellweather
 
-import com.yossisegev.climacellweather.country.*
+import com.yossisegev.climacellweather.country.data.ApiCountryDataSource
+import com.yossisegev.climacellweather.country.data.CountryListApi
+import com.yossisegev.climacellweather.country.data.CountryRepository
+import com.yossisegev.climacellweather.country.data.InMemCountryDataSource
+import com.yossisegev.climacellweather.country.entities.Country
 import io.reactivex.Observable
 import org.junit.After
 import org.junit.Before
@@ -18,15 +22,34 @@ class CountryRepositoryTests {
     @Before
     fun before() {
 
-        countryList.add(Country("name1", "cap1", "flag"))
-        countryList.add(Country("name2", "cap2", "flag"))
-        countryList.add(Country("name3", "cap3", "flag"))
+        countryList.add(
+            Country(
+                "name1",
+                "cap1",
+                "flag"
+            )
+        )
+        countryList.add(
+            Country(
+                "name2",
+                "cap2",
+                "flag"
+            )
+        )
+        countryList.add(
+            Country(
+                "name3",
+                "cap3",
+                "flag"
+            )
+        )
 
         countryListApi = mock(CountryListApi::class.java)
         `when`(countryListApi.getCountryList()).thenReturn(Observable.just(countryList))
         apiCountryDataSource =
             ApiCountryDataSource(countryListApi)
-        inMemCountryDataSource = InMemCountryDataSource()
+        inMemCountryDataSource =
+            InMemCountryDataSource()
         countryRepository = CountryRepository(
             inMemCountryDataSource,
             apiCountryDataSource

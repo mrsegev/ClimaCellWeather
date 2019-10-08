@@ -3,7 +3,8 @@ package com.yossisegev.climacellweather.weather
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yossisegev.climacellweather.weather.api.WeatherApi
+import com.yossisegev.climacellweather.weather.data.WeatherApi
+import com.yossisegev.climacellweather.weather.entities.SimpleTemp
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -20,7 +21,12 @@ class ForecastViewModel(private val weatherApi: WeatherApi) : ViewModel() {
 
                 Log.d("testing", "ok ${res.size}")
 
-                val simpleTemp = res.map { SimpleTemp(it.temp, it.observationTime) }
+                val simpleTemp = res.map {
+                    SimpleTemp(
+                        it.temp,
+                        it.observationTime
+                    )
+                }
                 Log.d("testing", "ok ${simpleTemp.size}")
                 forecastData.postValue(simpleTemp)
 

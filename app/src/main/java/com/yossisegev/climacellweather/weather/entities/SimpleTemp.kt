@@ -1,7 +1,4 @@
-package com.yossisegev.climacellweather.weather
-
-import com.yossisegev.climacellweather.weather.api.ObservationTime
-import com.yossisegev.climacellweather.weather.api.Temperature
+package com.yossisegev.climacellweather.weather.entities
 
 class SimpleTemp (temperatures: List<Temperature>, observationTime: ObservationTime) {
 

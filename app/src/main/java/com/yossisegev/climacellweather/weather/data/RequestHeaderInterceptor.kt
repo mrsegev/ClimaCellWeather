@@ -1,4 +1,4 @@
-package com.yossisegev.climacellweather.weather.api
+package com.yossisegev.climacellweather.weather.data
 
 import okhttp3.Interceptor
 import okhttp3.Response

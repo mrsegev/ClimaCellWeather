@@ -1,12 +1,12 @@
 package com.yossisegev.climacellweather
 
 import android.app.Application
-import com.yossisegev.climacellweather.country.ApiCountryDataSource
-import com.yossisegev.climacellweather.country.CountryListApi
-import com.yossisegev.climacellweather.country.CountryRepository
-import com.yossisegev.climacellweather.country.InMemCountryDataSource
-import com.yossisegev.climacellweather.weather.api.RequestHeaderInterceptor
-import com.yossisegev.climacellweather.weather.api.WeatherApi
+import com.yossisegev.climacellweather.country.data.ApiCountryDataSource
+import com.yossisegev.climacellweather.country.data.CountryListApi
+import com.yossisegev.climacellweather.country.data.CountryRepository
+import com.yossisegev.climacellweather.country.data.InMemCountryDataSource
+import com.yossisegev.climacellweather.weather.data.RequestHeaderInterceptor
+import com.yossisegev.climacellweather.weather.data.WeatherApi
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

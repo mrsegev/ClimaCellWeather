@@ -1,4 +1,4 @@
-package com.yossisegev.climacellweather.weather.api
+package com.yossisegev.climacellweather.weather.entities
 
 import com.google.gson.annotations.SerializedName
 

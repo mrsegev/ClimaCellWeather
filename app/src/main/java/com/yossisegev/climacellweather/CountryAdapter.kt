@@ -9,7 +9,12 @@ import com.yossisegev.climacellweather.country.entities.Country
 import kotlinx.android.synthetic.main.country_row.view.*
 
 
-class CountryAdapter(private val countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+class CountryAdapter(private var countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
+
+    fun setCountries(countries: List<Country>) {
+        this.countries = countries
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_row, parent, false)
@@ -25,7 +30,6 @@ class CountryAdapter(private val countries: List<Country>, private val callback:
     }
 
 
-
     class CountryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(country: Country, callback: CountryAdapterCallback?) = with(itemView) {
@@ -35,7 +39,6 @@ class CountryAdapter(private val countries: List<Country>, private val callback:
         }
     }
 }
-
 
 interface CountryAdapterCallback {
     fun onCountrySelected(country: Country)

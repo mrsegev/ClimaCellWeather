@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ClimaCellWeather</string>
+    <string name="search_hint">Search...</string>
 </resources>

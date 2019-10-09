@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.yossisegev.climacellweather.country.data.CountryRepository
 
 @Suppress("UNCHECKED_CAST")
-class CapitalsVMFactory(private val countryRepository: CountryRepository) : ViewModelProvider.Factory {
+class CountryVMFactory(private val countryRepository: CountryRepository) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return CapitalsViewModel(countryRepository) as T
+        return CountryViewModel(countryRepository) as T
     }
 
 }

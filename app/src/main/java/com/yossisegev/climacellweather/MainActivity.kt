@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), CountryAdapterCallback, TextWatcher {
             }
         })
 
-        countriesViewModel.getCountries()
+        countriesViewModel.searchCountries()
     }
 
     override fun onCountrySelected(country: Country) {
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), CountryAdapterCallback, TextWatcher {
         val disposable = searchSubject.debounce(1, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                countriesViewModel.search(it)
+                countriesViewModel.searchCountries(it)
             }
 
         disposables.add(disposable)

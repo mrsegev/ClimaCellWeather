@@ -13,28 +13,17 @@ import java.util.*
 
 class CountryViewModel(private val countryRepository: CountryRepository) : ViewModel() {
 
+    private val TAG = "CountryViewModel"
     val countriesData = MutableLiveData<List<Country>>()
     private val disposables = CompositeDisposable()
 
-    fun getCountries() {
-        val disposable = countryRepository.getCountryList()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ countries ->
-                countriesData.postValue(countries)
-            }, { err ->
-                Log.e("Testing", err.localizedMessage)
-            })
-
-        disposables.add(disposable)
-    }
-
-
-    fun search(query: String) {
+    fun searchCountries(query: String = "") {
+        Log.i(TAG, "Searching: $query")
         val disposable = countryRepository.getCountryList()
             .flatMap {
                 return@flatMap Observable.just(
-                    it.filter { country -> country.name.contains(query, true) }
+                    it.filter { country -> country.name.contains(query, true) ||
+                                country.capital.contains(query, true)}
                 )
             }
             .subscribeOn(Schedulers.io())
@@ -42,7 +31,7 @@ class CountryViewModel(private val countryRepository: CountryRepository) : ViewM
             .subscribe({ countries ->
                 countriesData.postValue(countries)
             }, { err ->
-                Log.e("Testing", err.localizedMessage)
+                Log.e(TAG, err.localizedMessage)
             })
 
         disposables.add(disposable)

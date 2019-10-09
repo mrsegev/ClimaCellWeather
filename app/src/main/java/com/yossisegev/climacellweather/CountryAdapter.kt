@@ -9,7 +9,7 @@ import com.yossisegev.climacellweather.country.entities.Country
 import kotlinx.android.synthetic.main.country_row.view.*
 
 
-class CountryAdapter(private val countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<ForecastAdapter.CountryViewHolder>() {
+class CountryAdapter(private val countries: List<Country>, private val callback: CountryAdapterCallback) : RecyclerView.Adapter<CountryAdapter.CountryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.country_row, parent, false)

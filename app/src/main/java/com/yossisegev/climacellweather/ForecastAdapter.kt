@@ -5,29 +5,34 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kinecosystem.myapplication.R
-import com.yossisegev.climacellweather.country.entities.Country
-import com.yossisegev.climacellweather.weather.entities.SimpleTemp
-import kotlinx.android.synthetic.main.country_row.view.*
+import com.yossisegev.climacellweather.weather.entities.SimpleWeather
+import kotlinx.android.synthetic.main.forecast_row.view.*
 
 
-class ForecastAdapter(private val temperatures: List<SimpleTemp>) : RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
-    
+class ForecastAdapter(private val temperatures: List<SimpleWeather>) : RecyclerView.Adapter<ForecastAdapter.ForecastViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.forecast_row, parent, false)
+        return ForecastViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return temperatures.size
     }
 
     override fun onBindViewHolder(holder: ForecastViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        holder.bind(temperatures[position])
     }
 
 
-    class ForecastViewHolder : RecyclerView.ViewHolder() {
+    class ForecastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        fun bind(temperature: SimpleWeather) = with (itemView) {
+            forecast_row_max.text = temperature.maxTemp.toString()
+            forecast_row_min.text = temperature.minTemp.toString()
+            forecast_row_date.text = temperature.time
+        }
     }
 }
 

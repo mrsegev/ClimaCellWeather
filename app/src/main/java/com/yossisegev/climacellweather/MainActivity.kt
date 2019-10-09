@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yossisegev.climacellweather.CountryAdapter
 import com.yossisegev.climacellweather.ForecastAdapter
 import com.yossisegev.climacellweather.CountryAdapterCallback
 import com.yossisegev.climacellweather.WeatherActivity
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity(), CountryAdapterCallback {
 
         capitalsViewModel.countriesData.observe(this, Observer {
             country_list.layoutManager = LinearLayoutManager(this)
-            country_list.adapter = ForecastAdapter(it, this)
+            country_list.adapter = CountryAdapter(it, this)
         })
 
         capitalsViewModel.getCountries()

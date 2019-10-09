@@ -4,14 +4,15 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yossisegev.climacellweather.weather.data.WeatherApi
-import com.yossisegev.climacellweather.weather.entities.SimpleTemp
+import com.yossisegev.climacellweather.weather.entities.SimpleWeather
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class ForecastViewModel(private val weatherApi: WeatherApi) : ViewModel() {
 
-    var forecastData = MutableLiveData<List<SimpleTemp>>()
+    var forecastData = MutableLiveData<List<SimpleWeather>>()
 
+    //TODO: canecel when needed
     fun getForecastFor(lat: Double, lon: Double) {
 
         weatherApi.getDailyForecast(lat, lon)
@@ -19,15 +20,10 @@ class ForecastViewModel(private val weatherApi: WeatherApi) : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ res ->
 
-                Log.d("testing", "ok ${res.size}")
-
                 val simpleTemp = res.map {
-                    SimpleTemp(
-                        it.temp,
-                        it.observationTime
-                    )
+                    SimpleWeather(it)
                 }
-                Log.d("testing", "ok ${simpleTemp.size}")
+
                 forecastData.postValue(simpleTemp)
 
             }, { err ->

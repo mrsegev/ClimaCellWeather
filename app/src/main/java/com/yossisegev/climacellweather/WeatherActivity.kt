@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinecosystem.myapplication.R
 import com.yossisegev.climacellweather.weather.ForecastVMFactory
 import com.yossisegev.climacellweather.weather.ForecastViewModel
@@ -23,9 +24,12 @@ class WeatherActivity : AppCompatActivity() {
 
 
         vm.forecastData.observe(this, Observer {
-            current_weather.text = it[0].max.toString()
+
+            forecast_list.layoutManager = LinearLayoutManager(this)
+            forecast_list.adapter = ForecastAdapter(it)
+
         })
 
-        vm.getForecastFor(40.7800, -73.9670)
+        vm.getForecastFor(40.7800, -73.9670) //TODO: remove hard-coding
     }
 }

@@ -31,7 +31,7 @@ class ForecastAdapter(private val temperatures: List<SimpleWeather>) : RecyclerV
         fun bind(temperature: SimpleWeather) = with (itemView) {
             forecast_row_max.text = temperature.maxTemp.toString()
             forecast_row_min.text = temperature.minTemp.toString()
-            forecast_row_date.text = temperature.time
+            forecast_row_date.text = temperature.date
         }
     }
 }
